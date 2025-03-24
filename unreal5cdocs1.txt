@@ -1,0 +1,921 @@
+C++ is the most effective and widely used programming language for creating video games.
+
+It’s also the language Unreal Engine, arguably the most popular game engine in the world, uses too.
+
+However, there are some differences between the traditional C++ programming software developers use and C++ that is used in Unreal Engine to create video games. The concepts are the same, just the syntax is slightly different.
+
+In this post we’ll cover in depth the differences between C++ for software development and C++ for Unreal Engine game development.
+
+Before we start, make sure that you download Unreal Engine and Visual Studio. You can follow the guide in the links below to do that:
+
+Download Unreal Engine And Taking A Look At Its Interface
+
+Downloading Visual Studio
+
+For every example we use, first we will show how it’s done in traditional C++ software development language, then we’ll show the same example how it’s done with C++ in Unreal Engine.
+
+Variables In C++
+Variables are the heart of any software application or video game. We use them to declare the properties in the app or game which will represent the high score, health, speed, ammo count, names of game characters, and so on.
+
+This means that there are different types of variables such as whole numbers, decimal point numbers, strings, and booleans.
+
+This is how we declare them in pure C++:
+
+// this include will add the library e.g. predefined
+// code that includes the string variable
+#include <string>;
+
+// the name space std is where the string is defined
+using namespace std;
+
+class Player
+{
+	int Health = 100;
+	float Speed = 5.5f;
+	string Name = "Wizard";
+	bool IsDead = true;
+};
+When declaring a variable, first we declare its type, then we give it a name, then we give it an optional value and we end the declaration usimg a semi colon ” ; “.
+
+The type of variable is represented by int, float, string, and bool. We’ll talk about every variable type in second.
+
+And the value of that variable is represented by the value we add after the  optional ” = ” sign. We say optional because we can also declare a variable like this:
+
+int Health;
+This means we declared a variable of type int, with the name Health and no value. Of course, every variable has a default value, which we’ll talk about as well. 
+
+And we can always change the values of any variable we declare hence why they are called variables. Now let’s go line by line very variable we declared and explain what it is.
+
+The variables are declared on lines 10, 11, 12,  and 13.
+
+Variable declared on line 10 is called an integer, or short int. Integers are whole numbers meaning they can’t have decimal points in their value.
+
+A float declared on line 11 on the other hand is a decimal point number.
+
+And even if you declare a float value which is a whole number, you still have to include a decimal point by adding at least the dot ” . “:
+
+// this will show an error in code
+float Speed = 5f;
+
+// this is the correct way to declare a whole float
+float Speed = 5.0f;
+
+// this is the correct way to declare a whole float
+float Speed = 5.f;
+The variables declared on lines 2 and 5 are exactly the same and will have the same value. They are both float with the value of 5. The only difference is when we declared the one on line 5, we included the decimal value.
+
+One thing you’ll notice with float variables is that we add ” f ” at the end of the declaration. The reason why we add ” f ” at the end of a float declaration is because we have another decimal point type variable called a double.
+
+This is how we declare it:
+
+double Mana = 2.4;
+The difference between a float and a double is in the precision. A double is more precise than a float, but these precisions go in the high decimal point values.
+
+An example for that would be a number like this:
+
+3.19827396781623871628376
+But there’s almost no case in game development where you’ll need a decimal number that has more than 3 decimal points.
+
+We’re working in the game dev industry since 2015 and we only encountered a decimal number with 2 points at most during our career.
+
+And that’s why float is used more than a double in game development and no game engine is an exception to this.
+
+Next, we have a string variable declared on line 12 in the above example. Strings represent characters and we use them to create variables that in most cases will repsent the names or tags of game objects.
+
+Also, when you declare a value of a string, you need to use quotes (“”):
+
+string Name = "Wizard";
+And the last variable declared on line 13 in the example above is a boolean or short bool.
+
+While all variabels we saw so far can have any number value or character value for a string, booleans can only have one of the two values: true or false.
+
+The IsDead bool value above has a value of true. We can also declare the value of that variable to be false, and that’s it.
+
+Booleans are used for conditional statements and for comparing variables with one another. We’ll see examples of this as well.
+
+Now, let’s take a look at how can we declare these same variables inside Unreal Engine and the syntax differerence between C++ for Unreal, and C++ for software development.
+
+C++ Variables In Unreal Engine
+As we already mentioned, C++ for software development and C++ for Unreal Engine are one and the same language. The concepts and the principles are the same, the only difference is the syntax.
+
+And syntax means the way how the code is written. So let’s take a look at that difference.
+
+Here’s how we declare the same types of variables we saw in the example above inside a C++ class in Unreal Engine:
+
+int Health = 100;
+float Speed = 5.5f;
+FString Name = "Wizard";
+bool IsDead = false;
+As you can see all the variables exactly the same except for the string variable which is named FString.
+
+Aside from the name being different e.g. the string inside Unreal Engine has F in front of it, everything else is the same.
+
+The FString variable functions the same way as the string variable inside C++. We still need to put the value of that string between quotes “” and it’s a character type variable.
+
+And this is that syntax difference. Essentially you’re using the same thing, but you’re writing it in a different way, that’s it.
+
+We can also delcare a double the same way we did in C++ in the example above:
+
+double Mana = 75.5;
+Again, we’ll use floats most of the time inside Unreal Engine, but this is just to show you that these variables are the same in Unreal Engine as well as C++.
+
+Math Operations With Variables
+We can perform math operations with variables. This is how we move the characters, shoot bullets, count score and many other things in our games.
+
+For some reason, a lot of people think that you need to be a math genious to do this, but as you’ll see in a moment, all you need to know is basic math operations like addition, subtraction, multiplication and division.
+
+Here’s how that looks like in C++:
+
+#include <iostream>
+
+int main()
+{
+	float Health = 55.0f;
+	float HealAmount = 10.0f;
+	float Damage = 5.0f;
+
+	std::cout << "The remaining health is: " << Health + HealAmount;
+	std::cout << "\nThe remaining health is: " << Health - Damage;
+	std::cout << "\nThe remaining health is: " << Health * HealAmount;
+	std::cout << "\nThe remaining health is: " << Health / Damage;
+}
+When we run this program this is the output we get in the console:
+
+CPP In Unreal - 1
+These are the basic math calculations we need to know to create games in Unreal Engine.
+
+You would need to know advanced math operations only if you want to work as a graphics developer, physics engine developre, or work on vector math. Otherwise, these basic operations are enough to create pretty much any game you want inside Unreal Engine.
+
+And speaking of Unreal Engine, let’s see how these same math operations look like inside Unreal:
+
+void APlayerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	float Health = 55.0f;
+	float HealAmount = 10.0f;
+	float Damage = 5.0f;
+
+	float HealthAddition = Health + HealAmount;
+	float HealthSubtraction = Health - Damage;
+	float HealthMultiplication = Health * HealAmount;
+	float HealthDivision = Health / Damage;
+
+	UE_LOG(LogTemp, Warning, TEXT("The value of health Addition is: %f"), HealthAddition);
+	UE_LOG(LogTemp, Warning, TEXT("The value of health Subtraction is: %f"), HealthSubtraction);
+	UE_LOG(LogTemp, Warning, TEXT("The value of health Multiplication is: %f"), HealthMultiplication);
+	UE_LOG(LogTemp, Warning, TEXT("The value of health Division is: %f"), HealthDivision);
+}
+When we run the game this is the out we get in the Output Log tab:
+
+CPP In Unreal - 2
+By performing the same operations on the same values we got the same result both in C++ raw application and in Unreal Engine.
+
+The only difference is that in Unreal Engine it displays six decimal point numbers, but don’t worry about that since that’s the default way how the output works and we can of course limit this to five, four, even one decimal point number. But since that’s not the point of this post we will not dive into that topic.
+
+Functions In C++
+In every program or video game we create we’ll have code that we reuse over and over again.
+
+And if that code has let’s say 100 lines, instead of copy-pasting those 100 lines in every part of the project where we need it, we can group that code in a function and reuse it whenever we need it.
+
+Using the math operations with variables example, we’re going to create functions for every math operation.
+
+Here’s how that looks like in C++ application:
+
+#include <iostream>
+
+int main()
+{
+	AddNumbers(55.0f, 10.0f);
+	SubtractNumbers(55.0f, 5.0f);
+	MultiplyNumbers(55.0f, 10.0f);
+	DivideNumbers(55.0f, 5.0f);
+}
+
+float AddNumbers(float a, float b)
+{
+	std::cout << "The Addition value of the numbers is: " << a + b;
+}
+
+float SubtractNumbers(float a, float b)
+{
+	std::cout << "The Subtraction value of the numbers is: " << a - b;
+}
+
+float MultiplyNumbers(float a, float b)
+{
+	std::cout << "The Multiplication value of the numbers is: " << a * b;
+}
+
+float DivideNumbers(float a, float b)
+{
+	std::cout << "The Division value of the numbers is: " << a / b;
+}
+When we run the program this is the output we get in the console:
+
+CPP In Unreal - 1
+We basically took the same operations from the previous example, put them in a function and now we can simply pass two float numbers as parameters that we’ll use inside the function to perform the specific operation.
+
+The functions we declare return a float value and take two parameters. The value that’s being returned as well as the parameter values are a float type.
+
+Of course, we can set these values to be integers, booleans, or strings.
+
+You can learn in-depth about functions by clicking on the link below:
+
+C++ Functions
+
+Now let’s take a look at how do we declare the same functions inside Unreal Engine:
+
+float AddNumbers(float a, float b);
+float SubtractNumbers(float a, float b);
+float MultiplyNumbers(float a, float b);
+float DivideNumbers(float a, float b);
+First, we declare the functions inside the .h file of the C++ class inside Unreal Engine. Essentially, in Unreal Engine when you create a C++ class automatically you get a .h and .cpp file for that class.
+
+In the .h file you declare all the variables and functions for that class, and inside the .cpp file you implement the functionality of the variables and functions.
+
+This is a brief explanation as we’ll not dive into that topic more than that for this post since we already have other posts where we explain that in-depth.
+
+We’ll put links of those posts at the bottom of this one and you can check them out after you finish this post.
+
+After we declared the functions in the .h file, we implement them in the .cpp file:
+
+void APlayerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	UE_LOG(LogTemp, Warning, TEXT("The value of health Addition is: %f"), AddNumbers(55.0f, 10.0f));
+	UE_LOG(LogTemp, Warning, TEXT("The value of health Subtraction is: %f"), SubtractNumbers(55.0f, 5.0f));
+	UE_LOG(LogTemp, Warning, TEXT("The value of health Multiplication is: %f"), MultiplyNumbers(55.0f, 10.0f));
+	UE_LOG(LogTemp, Warning, TEXT("The value of health Division is: %f"), DivideNumbers(55.0f, 5.0f));
+}
+
+float APlayerCharacter::AddNumbers(float a, float b)
+{
+	return a + b;
+}
+
+float APlayerCharacter::SubtractNumbers(float a, float b)
+{
+	return a - b;
+}
+
+float APlayerCharacter::MultiplyNumbers(float a, float b)
+{
+	return a * b;
+}
+
+float APlayerCharacter::DivideNumbers(float a, float b)
+{
+	return a / b;
+}
+The APlayerCharacter is the name of the class which we use when we implement the function functionality like this:
+
+return value ClassName::FunctionName(parameters if any)
+{
+    implementation of the function
+}
+When we run the game this is the out we get in the Output Log tab:
+
+CPP In Unreal - 2
+Since we used the same numbers, the values are exactly the same as in the C++ example and in the previous Unreal Engine example.
+
+Conditional Statements
+In programming and game development we always have situations where decisions are made.
+
+Should you press the left or the right button, does the player need to go left or right, is the health value lower or greater than zero and so on.
+
+In programming and game development we use conditional statements to create choices in the application or game.
+
+This is how a conditional statement looks like inside C++ app:
+
+if (true)
+{
+	// code goes here
+}
+else
+{
+	// code goes here
+}
+Conditional statements are also called if else statements. The way if else statements work is you test for a condition, and if that condition is true the clause where that condition is true will be executed.
+
+In the example above, the caluse in the if(true) will be executed and the clause for the else will not be executed.
+
+One thing you’ll notice is the “true” part of the if else statement. This is where booleans come into play.
+
+If you remember at the beginning of the post when we talked about the bool variable we said we use it to test conditions in our projects, and this is how that looks like.
+
+Of course, when writing an app or a game we’ll never use if(true) for a statement, instead we would have variables that indicate a state in the game, such as IsAlive:
+
+bool IsAlive = true;
+
+if (IsAlive)
+{
+	// player is still alive don't end the game
+}
+else
+{
+	// player is dead. end the game
+}
+In the example above the bool declared on line 1 will always have a value of true, but in a game events will happen that can lower the player’s health value to or below zero and then the IsAlive variable will have a value of false and then we can run the game over code.
+
+We can also compare numbers with if else statements:
+
+float a = 10.0f;
+float b = 5.0f;
+
+if (a > b)
+{
+	// a is greater than b
+}
+else
+{
+	// a is less than b
+}
+Again, in the example above a and b will always have a value of 10 and 5, but this is just to demonstrate how the if else statements work. 
+
+In a real project the values you declare for your classes will always change and thus the comparisons you make will be dynamic.
+
+Here are all the comparisons we can make with numbers:
+
+float a = 10.0f;
+float b = 5.0f;
+
+if (a > b)
+{
+	// a is greater than b
+}
+
+if (a >= b)
+{
+	// a is greater than or equal to b
+}
+
+if (a < b)
+{
+	// a is less than b
+}
+
+if (a <= b)
+{
+	// a is less than or equal to b
+}
+
+if (a == b)
+{
+	// a is equal to b
+}
+And here’s another way how we can write these same conditions:
+
+float a = 10.0f;
+float b = 5.0f;
+
+if (a > b)
+{
+	// a is greater than b
+}
+else if (a >= b)
+{
+	// a is greater than or equal to b
+}
+else if (a < b)
+{
+	// a is less than b
+}
+else if (a <= b)
+{
+	// a is less than or equal to b
+}
+else if (a == b)
+{
+	// a is equal to b
+}
+Notice in the example above we’re using else if statements and in the example prior to that we were just using if statements.
+
+Another thing to point out is for the last comparison if a is equal to b. We are using the double equal sign ” == ” to compare the two numbers.
+
+So when you’re comparing two numbers if their values are equal you use the double equal sign ” == ” but when you declare a value for a variable then you use a single equal sign ” = “.
+
+In this case, there’s no difference in the result we get for the conditions we’re testing between the if statements and if else statements, but we can use different conditional statement structures to test different conditions.
+
+For example:
+
+float a = 10.0f;
+float b = 5.0f;
+
+if (a > b)
+{
+	// a is greater than b
+}
+else if (a < b)
+{
+	// a is less than b
+}
+else
+{
+	// a is neither greater than or less than b
+}
+In the example above, if a is greater than b we’ll execute the code for that condition. If a is less than b we’ll execute the code for that condition. And lastly, if neither of those conditions is true, we’ll execute the code in the “else” clause.
+
+In a practical example this would look like this:
+
+if (wolf enemy attacks the player)
+{
+	// deal 10 damage to the player
+}
+else if (hawk enemy attacks the player)
+{
+	// deal 20 damage to the player
+}
+else
+{
+	// deal 5 damage to the player
+}
+Of course, in our game we would not name the variables like in the example above, but this is just to illustrate different situations we might have in a game.
+
+Another thing to note is that all these comparisons end up being either true or false, hence the booleans involment in conditional statements.
+
+When we test if a > b this will either result in true if a is greater than b, or false if a is not greater than b.
+
+This also means that we can set boolean values like this:
+
+float a = 5.0f;
+float b = 4.0f;
+
+bool c = a > b;
+We are comparing if variable a is greater than b which will result in either true or false, and we set that value to the boolean c variable.
+
+Of course, in the example above the value will be true, so if we were to print the value of the c variable we would see true being printed in the console.
+
+Now let’s go over to Unreal Engine and see how the conditional statements look inside Unreal Engine:
+
+float a = 5.5f;
+float b = 3.3f;
+
+if (a > b)
+{
+	// a is greater than b
+}
+else if (a < b)
+{
+	// a is less than b
+}
+else
+{
+	// a is neither greater nor less than b
+}
+
+if (a > b)
+{
+	// a is greater than b
+}
+
+if (a < b)
+{
+	// a is less than b
+}
+
+if (a >= b)
+{
+	// a is greater than or equal to b
+}
+
+if (a <= b)
+{
+	// a is less than or equal to b
+}
+
+if (a == b)
+{
+	// a is equal to b
+}
+As you can see there’s no difference between using conditional statements in a C++ application or Unreal Engine game.
+
+C++ Loops
+Another thing that we do often is apps and video games is repeat a certain mechanic. And we do that with the help of loops.
+
+This is how a loop looks like in C++ app:
+
+#include <iostream>
+
+int main()
+{
+	for (int i = 0; i < 10; i++)
+	{
+		std::cout << "The value of i is: " << i << "\n";
+	}
+}
+When we run the app, this is what we’ll see printed in the console:
+
+CPP In Unreal - 3
+The loop in the example above is called a for loop. And the for loop basically loops over the code that’s between the curly brackets ” {} “, in the example above it is calling the std::cout code 10 times.
+
+Why 10 times?
+
+Because the condition of the loop is i < 10, which means it will loop for as long as i has a value that’s less than 10. Then it will increment the i value by 1 using the ++ syntax which basically means take the current value if i and add 1 to it.
+
+As soon as the i value reaches a value that’s not less than 10, the loop will stop looping.
+
+Here’s a more in-depth guide about loops in C++:
+
+Loops In C++
+
+Now we are going to take a look at how a for loop looks like inside Unreal Engine:
+
+void APlayerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	for (int i = 0; i < 10; i++)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("The value i is: %i"), i);
+	}
+}
+When we run the game, this is what we’ll see printed in the Output Log tab:
+
+CPP In Unreal - 4
+As you can see the C++ for loop is exactly the same in Unreal Engine as well. And the same explanations are valid for both versions.
+
+Let’s take a look at another type of loop called a while loop.
+
+Here’s a C++ example of the while loop:
+
+while(condition is true)
+{
+    // execute the code
+}
+This is how the structure from the for loop would look like in a while loop:
+
+int i = 0;
+
+while(i < 10)
+{
+    std::cout << "The value if i is " << i << "\n";
+    i++;
+}
+When we run the app, this is what we’ll see in the console:
+
+CPP In Unreal - 3
+While the structure is slightly different, the purpose and use are the same.
+
+The only thing we need to be careful of with the while loop is to make the condition of the loop eventually be false, otherwise, we would have an infinite while loop.
+
+You can read more about that in the link below:
+
+Loops In C++
+
+And here’s how a while loop looks like in Unreal Engine:
+
+void APlayerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	int i = 0;
+
+	while (i < 10)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("The value i is: %i"), i);
+		i++;
+	}
+}
+And when we run the game, this is what we’ll see in the Output Log tab:
+
+CPP In Unreal - 4
+Again, the structure and the explanations are exactly the same. And you also need to be careful about the while loop condition eventually becoming false so that you don’t have an infinite while loop.
+
+Arrays In C++
+The variables we saw so far can only store one value at a time. This is where arrays come into play.
+
+Arrays can store multiple values at the same time and we access these values using their index number.
+
+Any variable can be an array, be that integer, float, boolean, or a string. But the array can only store the values of the same variable type.
+
+For example, if we create an array of integers, we can only store integers in that array. We can’t store floats, strings, or booleans.
+
+We already covered C++ arrays in another blog post which you can check out by clicking the link below:
+
+Arrays In C++
+
+Using the same example from the post in the link above, this is how arrays are declared in C++:
+
+int DamagePoints[10];
+
+// FIRST WE INITIALIZE ARRAY VALUES
+for (int i = 0; i < std::size(DamagePoints); i++)
+{
+    DamagePoints[i] = rand();
+}
+
+// THEN WE PRINT THOSE VALUES
+for (int i = 0; i < std::size(DamagePoints); i++)
+{
+    std::cout << "\nThe value of element is: " << DamagePoints[i];
+}
+And when we run the app we will see random integer values printed in the console.
+
+Now, let’s do the same in Unreal Engine:
+
+TArray<int> DamagePoints;
+First, inside the .h file of the C++ class we declare the array. For that we use TArray and between the <> we declare the type of variable this array will store, in this case an integer.
+
+And this is how we initialize the array:
+
+void APlayerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	for (int i = 0; i < 10; i++)
+	{
+		DamagePoints.Add(FMath::RandRange(1, 100));
+	}
+
+	for (int i = 0; i < DamagePoints.Num(); i++)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("The value Element at index %i is: %i"), i, DamagePoints[i]);
+	}
+}
+The difference between the C++ array we saw in the example above and the TArray in Unreal Engine is that the TArray is a dynamic array.
+
+Dynamic meaning it’s resizeble and not fixed in size like the normal C++ array. Which means we can add and remove as many elements as we want.
+
+But the essential use is the same.
+
+We can store multiple elements inside the array, and we can use their indexes to access those elements which we saw in the examples above.
+
+Again, you can read more about arrays in the post link below:
+
+Arrays In C++
+
+And we also cover TArrays in more depth inside Game Dev Pro and Game Dev Pro Rapid Launch.
+
+Pointers And References In C++
+Every time you create a variable in your app or game, the computer allocates memory for that variable.
+
+Of course, depending on the type of the variable the memory will be larger or lower. And if you fill up the memory, your app or game will crash. This is also known as a memory leak.
+
+In C++, we use pointers and references to point to those spots in memory that holds the variable we declared.
+
+C++ is notorious for its pointers and references because after you finish using them, you need to delete them or simply said you need to destroy the spots in memory that hold the variables you’re no longer using.
+
+Because if these variables pile up in the memory, you’ll get a memory leak and your app or game will crash.
+
+This was done manually for many years, so developers had to be careful not to leave any variable when they were done with it so that it doesn’t cause the program to crash.
+
+But over the years C++ became better at this and it was doing these operations automatically.
+
+Yet, a lot of developers don’t know this and that’s why they’re afraid of pointers and references in C++. And they are even more afraid of pointers and references inside Unreal Engine.
+
+First, we are going to take a look at pointers and references inside pure C++. You can do that by clicking on the links below because we already covered both topics in-depth in these posts:
+
+Pointers In C++
+
+References In C++
+
+Moving forward, now that we know how pointers and references work in C++, let’s take a look at how they work inside Unreal Engine.
+
+Assuming we have a class called PlayerCharacter, this is how we would declare it:
+
+APlayerCharacter* PlayerCharacter;
+This decalres a variable called PlayerCharacter type of APlayerCharacter class. The ” * ” denotes that this variable is a pointer.
+
+Since this variable is a pointer, we’ll have to dispose of it when we stop using it in the project.
+
+Now here comes the good part. Inside Unreal Engine, all we have to do is mark that variable with the macro UPROPERTY() and this variable will be marked to participate in the memory management process:
+
+UPROPERTY()
+APlayerCharacter* PlayerCharacter;
+Just by adding this single line will make the GC or garbage collection management dispose of the PlayerCharacter variable when we stop using it in the project and we don’t have to do anything else.
+
+We can also mark functions for memory management participation by using the UFUNCTION() macro:
+
+UFUNCTION()
+void Attack();
+UFUNCTION() has the same effect for a function as the UPROPERTY() has for a variable and the same rules apply.
+
+You can also use these macros to expose variables and functions to blueprints as well.
+
+For a more detailed guide on how C++ memory management works inside Unreal Engine read our short blog post below:
+
+C++ Memory Management In Unreal Engine
+
+Classes And Objects In C++
+Classes and objects are the basis of everything we do inside C++ and any other programming language. With classes we model the behavior and with objects we execute that behavior.
+
+We already covered C++ classes in-depth in our other blog post which you can read by clicking on the link below:
+
+Classes And Objects In C++
+
+If you didn’t know what are classes and objects, the explanations in the post above will make you a pro at that topic and allow you to understand this concept from the group up.
+
+Now, when we know what are classes in C++, how to create them and use them, let’s take a look at how to do the same inside Unreal Engine.
+
+First, when you create a class in Unreal Engine it will prompt you to select the parent class:
+
+CPP In Unreal - 5
+A parent class is just a class that’s already defined, and when a class has a parent class that’s called inheritance. We’ll cover inheritance after the class part. But for know, just know that in Unreal Engine you first select the parent class.
+
+After you do that, it will take you to another window where you give the class a name and create the new class by pressing the Create Class button:
+
+CPP In Unreal - 6
+This will automatically create two files. One .h and one .cpp file for the class.
+
+This is the .h file of the PlayerCharacter class we created:
+
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/Character.h"
+#include "PlayerCharacter.generated.h"
+
+UCLASS()
+class UE_CPP_API APlayerCharacter : public ACharacter
+{
+	GENERATED_BODY()
+
+public:
+	// Sets default values for this character's properties
+	APlayerCharacter();
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+};
+And this is the .cpp file:
+
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "PlayerCharacter.h"
+
+// Sets default values
+APlayerCharacter::APlayerCharacter()
+{
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+}
+
+// Called when the game starts or when spawned
+void APlayerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
+// Called every frame
+void APlayerCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+// Called to bind functionality to input
+void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+}
+As we already know, inside the .h file we’ll declare all the variables and functions the class will have, and inside the .cpp file we’ll implement the functionality of the class.
+
+So if we want to declare two functions for the PlayerCharacter class, one called Attack and the other called Walk, this is how we would do it.
+
+First, inside the .h file:
+
+void Attack();
+void Walk();
+Then inside the .cpp file:
+
+void APlayerCharacter::Attack()
+{
+	// player attack
+}
+
+void APlayerCharacter::Walk()
+{
+	// player walk
+}
+As you can see, there’s no difference how we declare and handle classes inside raw C++ and insde Unreal Engine.
+
+When we want to use the class in another class file, we’d also import the .h file of the class we want to use:
+
+#include "PlayerCharacter.h"
+Now because in Unreal Engine we deal with actors in the level, we don’t create objects the same way we did in C++ by using the equals sign ” = ” instead we get references to the objects.
+
+But prior to that, we would have to create a reference variable inside the .h file like this:
+
+APlayerCharacter* PlayerCharacter;
+And then, inside the .cpp file we would get a reference to the PlayerCharacter variable.
+
+Most of the time we get a reference to the variable when a collision happens, or we add the reference via the Blueprint editor.
+
+Since that’s a topic on it’s own, we’ll not dive into it here. We’ll leave links at the bottom of this post where you can learn how to do this through practice by creating a game.
+
+But for now, we’ll just show that we can use the attributes of the PlayerCharacter class, the same way we used the attributes of the Player class in the C++ example:
+
+void AClassTest::BeginPlay()
+{
+	Super::BeginPlay();
+
+	PlayerCharacter->Attack();
+}
+As you can see online 5, we’re using the PlayerCharacter Attack function and any code that’s inside that function would be executed when we call it.
+
+Inheritance In C++
+The last part of the foundational pillars of C++ coding is inheritance.
+
+Inheritance basically means we can inherit a class we already created and defined.
+
+Of course, we inherit a class by class. So, we create a new class, and inside that new class, we inherit a class we already created.
+
+The class that inherits is called a child class, and the class that’s being inherited is called a parent class.
+
+The child class will inherit all public variables and functions defined in the parent class and it can use them as its own.
+
+Furthermore, it can also edit the functions of the parent class and change their functionality. Of course, this change will only be applied in the child class, it will not affect the parent class.
+
+We already covered inheritance in-depth in the post you can read by clicking the link below:
+
+Inheritance In C++
+
+The post above will allow you to understand everything about inheritance inside C++.
+
+Now, let’s take a look at how inheritance works inside Unreal Engine.
+
+When we created the PlayerCharacter class, at the very beginning we were prompted to select a parent class for it.
+
+We’re not obligated to inherit a class every time we create a new one inside Unreal, but most of the times the classes we create in Unreal will inherit a predefined class such as Actor, Pawn, Character and so on.
+
+This is because we’ll use the classes inside the game, and for that we’ll have to inherit classes which are already defined that allow us to use our own classes in the game.
+
+When we created the PlayerCharacter class, we selected that it should inherit the Character class. This is the default .h file that’s generated when the PlayerCharacter class was created:
+
+#include "CoreMinimal.h"
+#include "GameFramework/Character.h"
+#include "PlayerCharacter.generated.h"
+
+UCLASS()
+class UE_CPP_API APlayerCharacter : public ACharacter
+{
+	GENERATED_BODY()
+
+public:
+	// Sets default values for this character's properties
+	APlayerCharacter();
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+};
+At the top on line 6, you’ll see that our APlayerCharacter class is inheriting the ACharacter class. Don’t worry about the A letter in front of the class, that’s added by default.
+
+By inheriting the ACharacter class we also inherit all functions and variables defined in the ACharacter class, as well as all functions and variables in classes from which ACharacter class inherited prior.
+
+Hence we see functions like BeginPlay, Tick, and SetupPlayerInputComponent.
+
+And inside the PlayerCharacter .cpp file, these functions are already defined:
+
+#include "PlayerCharacter.h"
+
+// Sets default values
+APlayerCharacter::APlayerCharacter()
+{
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+}
+
+// Called when the game starts or when spawned
+void APlayerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
+// Called every frame
+void APlayerCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+}
+
+// Called to bind functionality to input
+void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+Of course, we would have to add the code which will initialize the PlayerCharacter function and so on, but you get the point which is we can use these functions inside the PlayerCharacter class.
+
+Again, as you can see, inheritance is pretty much the same in C++ and Unreal Engine.
+
+And overall, there’s a very small syntax difference between raw C++ and C++ used in Unreal Engine.
